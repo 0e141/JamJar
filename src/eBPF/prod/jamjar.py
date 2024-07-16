@@ -33,7 +33,7 @@ bpf_text = """
 #include <linux/fs.h>
 
 #define ARGSIZE  128
-#define UID_FILTER 1001
+#define UID_FILTER 1000
 
 enum event_type {
     EVENT_ARG,
