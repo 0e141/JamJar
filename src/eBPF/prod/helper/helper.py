@@ -107,14 +107,14 @@ def create_fake_dir_data_helper():
 
 
 def create_fake_arp_data_helper(int1):
-     return {"_gateway": ARP(address="_gateway", hwaddress="16:38:fd:f6:c2:c3", iface=int1)}
+     return {"_gateway": ARP(address="_gateway", hwaddress="af:33:4f:f6:2c:dd", iface=int1)}
 
 
 
 def create_fake_interface_data_helper():
      return {
             "lo": INTERFACE(),
-            "ens18": INTERFACE(["ens18", "enp0s18"], "ether", 1500, "BROADCAST,MULTICAST", mac="24:11:a3:21:9d", mac_brd="ff:ff:ff:ff:ff:ff", state=2, inet4=["192.168.60.200/24"], inet6="fe80::be24:11ff:fea3:219d/64")
+            "ens18": INTERFACE(["ens18", "enp0s18"], "ether", 1500, "BROADCAST,MULTICAST", mac="42:f6:3a:54:ad", mac_brd="ff:ff:ff:ff:ff:ff", state=2, inet4=["192.168.0.12/24"], inet6="fe80::ef52:de12:d4ee:139a/64")
             }
 
 
