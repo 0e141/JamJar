@@ -96,9 +96,9 @@ def create_fake_dir_data_helper():
     add_file_helper(root, "/home", Dir("user", perm="drwxr-x---"))
     for file in home_user:
         if file[0] == "dir":
-            add_file_helper(root, "/home/user/", Dir(name=file[1], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6]))
+            add_file_helper(root, "/home/user/", Dir(name=file[1], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6], owner="user", group="user"))
         else:
-            add_file_helper(root, "/home/user/", File(file[1], file_type="file" if not file[2] else file[2], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6]))
+            add_file_helper(root, "/home/user/", File(file[1], file_type="file" if not file[2] else file[2], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6], owner="user", group="user"))
 
     # TODO more fake dirs
 
