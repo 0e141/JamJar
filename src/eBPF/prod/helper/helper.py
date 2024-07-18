@@ -76,29 +76,29 @@ def create_fake_dir_data_helper():
     root_start = ["bin", "dev", "etc", "usr", "home", "lib", "sbin", "tmp", "var"]
 
     home_user = [
-          ["file", ".bash_history", ""],
-          ["file", ".bash_logout", ""],
-          ["dir", ".cache", ""],
-          ["file", ".bashrc", ""],
-          ["dir", ".local", ""],
-          ["file", ".profile", ""],
-          ["dir", ".ssh", ""],
-          ["file", "test_file", "txt"],
-          ["file", ".test_file_hidden", "txt"]
+          ["file", ".bash_history", "", "-rw-------", "Jul", "13", "12:31"],
+          ["file", ".bash_logout", "", "-rw-r--r--", "Jul", "13", "12:31"],
+          ["dir", ".cache", "", "drwx------", "May", "20", "21:13"],
+          ["file", ".bashrc", "", "drwx------", "May", "20", "21:13"],
+          ["dir", ".local", "", "drwxrwxr-x", "Jul", "1", "00:25"],
+          ["file", ".profile", "", "-rw-r--r--", "Jul", "7", "14:10"],
+          ["dir", ".ssh", "", "drwx------", "Jun", "13", "19:14"],
+          ["file", "test_file", "txt", "-rw-r--r--", "Jun", "15", "11:12"],
+          ["file", ".test_file_hidden", "txt", "-rw-r--r--", "Jun", "15", "11:13"]
     ]
     
     root = Dir("root", perm="drwxrwxrwx")
     root.parent = root
 
     for dir in root_start:
-        add_file_helper(root, "/", Dir(dir, perm="drwxr-xr-x"))
+        add_file_helper(root, "/", Dir(dir, perm="drwxr-xr-x", created_month="Jul", created_day=11, created_time="12:29"))
 
-    add_file_helper(root, "/home", Dir("user", perm="drwxr-xr-x"))
+    add_file_helper(root, "/home", Dir("user", perm="drwxr-x---"))
     for file in home_user:
         if file[0] == "dir":
-            add_file_helper(root, "/home/user/", Dir(file[1]))
+            add_file_helper(root, "/home/user/", Dir(name=file[1], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6]))
         else:
-            add_file_helper(root, "/home/user/", File(file[1], file_type="file" if not file[2] else file[2]))
+            add_file_helper(root, "/home/user/", File(file[1], file_type="file" if not file[2] else file[2], perm=file[3], created_month=file[4], created_day=file[5], created_time=file[6]))
 
     # TODO more fake dirs
 
